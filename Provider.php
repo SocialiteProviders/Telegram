@@ -94,9 +94,9 @@ class Provider extends AbstractProvider
     public function user()
     {
         $validator = Validator::make($this->request->all(), [
-            'id'        => 'required|numeric',
-            'auth_date' => 'required|date_format:U|before:1 day',
-            'hash'      => 'required|size:64',
+            'id'        => ['required', 'numeric'],
+            'auth_date' => ['required', 'date_format:U|before:1 day'],
+            'hash'      => ['required', 'size:64'],
         ]);
 
         throw_if($validator->fails(), InvalidArgumentException::class);
